@@ -1,0 +1,38 @@
+[
+  {
+    "title": "句子成分总览",
+    "url": "https://www.bilibili.com/video/BVxxxx",
+    "episode_order": 1,
+    "notes_markdown": "英语句子通常围绕主语和谓语展开。主语说明谁或什么，谓语说明动作或状态。宾语承接动作，表语说明主语状态。",
+    "key_points": [
+      {
+        "title": "主语",
+        "difficulty": 1,
+        "examples": ["Tom runs every morning.", "Learning English takes time."]
+      },
+      {
+        "title": "谓语",
+        "difficulty": 1,
+        "examples": ["She reads books.", "The sky is blue."]
+      }
+    ]
+  },
+  {
+    "title": "五大基本句型",
+    "url": "https://www.bilibili.com/video/BVyyyy",
+    "episode_order": 2,
+    "notes_markdown": "五大基本句型包括 SV、SVC、SVO、SVOO、SVOC。识别句型能帮助你判断动词后面需要什么成分。",
+    "key_points": [
+      {
+        "title": "SVO",
+        "difficulty": 2,
+        "examples": ["I like grammar.", "They built a house."]
+      },
+      {
+        "title": "SVC",
+        "difficulty": 2,
+        "examples": ["He is tired.", "The soup smells good."]
+      }
+    ]
+  }
+]

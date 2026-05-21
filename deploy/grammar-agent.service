@@ -1,0 +1,15 @@
+[Unit]
+Description=English Grammar Agent
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/grammar-agent
+EnvironmentFile=/opt/grammar-agent/.env
+ExecStart=/opt/grammar-agent/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
