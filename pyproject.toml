@@ -26,6 +26,10 @@ dev = [
 testpaths = ["tests"]
 asyncio_mode = "auto"
 
+[tool.setuptools.packages.find]
+include = ["app*"]
+exclude = ["deploy*", "docs*", "examples*", "scripts*", "tests*"]
+
 [tool.ruff]
 line-length = 100
 
