@@ -1,5 +1,5 @@
 from datetime import UTC, date, datetime
-from enum import StrEnum
+from enum import Enum
 
 from sqlalchemy import Column, Text
 from sqlmodel import Field, SQLModel
@@ -9,24 +9,24 @@ def utc_now() -> datetime:
     return datetime.now(UTC)
 
 
-class LessonStatus(StrEnum):
+class LessonStatus(str, Enum):
     DRAFT = "draft"
     READY = "ready"
     ARCHIVED = "archived"
 
 
-class ExerciseType(StrEnum):
+class ExerciseType(str, Enum):
     CHOICE = "choice"
     CORRECTION = "correction"
     SENTENCE = "sentence"
 
 
-class SessionStatus(StrEnum):
+class SessionStatus(str, Enum):
     STARTED = "started"
     COMPLETED = "completed"
 
 
-class ChatRole(StrEnum):
+class ChatRole(str, Enum):
     USER = "user"
     ASSISTANT = "assistant"
     SYSTEM = "system"
