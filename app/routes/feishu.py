@@ -1,3 +1,4 @@
+import logging
 from typing import Annotated
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request
@@ -10,6 +11,7 @@ from app.services.agent import GrammarAgent
 from app.services.feishu import FeishuClient, challenge_response, parse_feishu_event
 
 router = APIRouter(prefix="/feishu", tags=["feishu"])
+logger = logging.getLogger(__name__)
 SessionDep = Annotated[Session, Depends(get_session)]
 SettingsDep = Annotated[Settings, Depends(get_settings)]
 
@@ -41,6 +43,12 @@ async def feishu_events(
     session.add(FeishuEventLog(event_id=incoming.event_id))
     session.commit()
 
+    logger.info(
+        "Accepted Feishu message event_id=%s user_id=%s text_length=%s",
+        incoming.event_id,
+        incoming.user_id,
+        len(incoming.text),
+    )
     background_tasks.add_task(_process_message, incoming.user_id, incoming.text, settings)
     return {"status": "accepted"}
 
