@@ -1,4 +1,4 @@
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from sqlmodel import Session, select
 
@@ -24,7 +24,7 @@ def schedule_reviews(
     is_correct: bool = True,
     now: datetime | None = None,
 ) -> list[ReviewItem]:
-    now = now or datetime.now(UTC)
+    now = now or datetime.now(timezone.utc)
     updated: list[ReviewItem] = []
     for point_id in knowledge_point_ids:
         item = session.exec(
@@ -54,7 +54,7 @@ def schedule_reviews(
 
 
 def due_reviews(session: Session, user_id: str, now: datetime | None = None) -> list[ReviewItem]:
-    now = now or datetime.now(UTC)
+    now = now or datetime.now(timezone.utc)
     return session.exec(
         select(ReviewItem).where(ReviewItem.user_id == user_id).where(ReviewItem.due_at <= now)
     ).all()

@@ -1,4 +1,4 @@
-from datetime import UTC, date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 from sqlmodel import Session, select
 
@@ -31,7 +31,7 @@ def test_review_interval_updates_by_answer_quality(session: Session, sample_less
 
 
 def test_due_reviews_only_returns_due_items(session: Session, sample_lessons: None) -> None:
-    now = datetime(2026, 5, 21, tzinfo=UTC)
+    now = datetime(2026, 5, 21, tzinfo=timezone.utc)
     session.add(
         ReviewItem(
             user_id="u1",

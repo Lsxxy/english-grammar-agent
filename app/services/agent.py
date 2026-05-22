@@ -1,4 +1,4 @@
-from datetime import UTC, date, datetime
+from datetime import date, datetime, timezone
 
 from sqlmodel import Session, desc, select
 
@@ -69,7 +69,7 @@ class GrammarAgent:
         if looks_like_answer(text):
             result = await self._grade_answer(session, text)
             active.mastery_score = clamp(active.mastery_score + result.mastery_delta, 0, 1)
-            active.updated_at = datetime.now(UTC)
+            active.updated_at = datetime.now(timezone.utc)
             schedule_reviews(
                 session,
                 user_id=user_id,

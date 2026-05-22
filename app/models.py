@@ -1,4 +1,4 @@
-from datetime import UTC, date, datetime
+from datetime import date, datetime, timezone
 from enum import Enum
 
 from sqlalchemy import Column, Text
@@ -6,7 +6,7 @@ from sqlmodel import Field, SQLModel
 
 
 def utc_now() -> datetime:
-    return datetime.now(UTC)
+    return datetime.now(timezone.utc)
 
 
 class LessonStatus(str, Enum):
